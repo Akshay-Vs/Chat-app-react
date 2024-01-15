@@ -1,0 +1,91 @@
+@import "../../shared/theme.scss";
+.inputs {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: 0;
+
+  .text-input {
+    width: 75%;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    margin: 10px 0;
+
+    &::placeholder {
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .send-button {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+    border-radius: 100px;
+    margin: 0 10px;
+    user-select: none;
+
+    .send-button__icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .send-button__icon--dark {
+      color: $text-dark;
+    }
+
+    .send-button__icon--light {
+      color: $text-light;
+    }
+  }
+}
+
+.inputs--dark {
+  background-color: $bg-dark;
+}
+
+.inputs--light {
+  background-color: $bg-light;
+}
+
+.text-input--light {
+  background-color: $bg-light;
+  border: 2px solid $accent-light;
+  color: $text-light;
+  &::placeholder {
+    color: $text-light;
+  }
+}
+.text-input--dark {
+  background-color: $bg-dark;
+  border: 2px solid $accent-dark;
+  color: $text-dark;
+  &::placeholder {
+    color: $text-dark;
+  }
+}
+.send-button--dark {
+  background-color: $accent-dark;
+}
+
+.send-button--light {
+  background-color: $accent-light;
+}

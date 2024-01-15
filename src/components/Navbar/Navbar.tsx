@@ -16,7 +16,7 @@ const Navbar = ({ theme, setTheme }: NavbarProps) => {
     <nav className={`${theme == "dark" ? "nav--dark" : "nav--light"}`}>
       <div className="brand-info">
         <img className="avatar" src={brandAvatar} />
-        <h1 className="company-name">Company Name</h1>
+        <h1 className="company-name">Chat Name</h1>
       </div>
 
       <FontAwesomeIcon

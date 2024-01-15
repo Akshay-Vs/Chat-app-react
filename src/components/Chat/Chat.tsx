@@ -6,7 +6,17 @@ interface ChatProps {
 }
 
 const Chat = ({ theme }: ChatProps) => {
-  return <div>{theme}</div>;
+  return (
+    <div className="chat">
+      <ChatInfo theme={theme} />
+      <ChatInfo theme={theme} />
+      <ChatInfo theme={theme} />
+      <ChatInfo theme={theme} />
+      <ChatInfo theme={theme} />
+      <ChatInfo theme={theme} />      
+      <ChatInfo theme={theme} />
+    </div>
+  );
 };
 
 export default Chat;

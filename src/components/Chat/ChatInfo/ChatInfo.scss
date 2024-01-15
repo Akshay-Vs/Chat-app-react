@@ -1,0 +1,47 @@
+@import "../../../shared/theme.scss";
+
+.chat-info {
+  width: 197px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+
+  .chat-avatar {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    margin-top: 12px;
+    user-select: none;
+  }
+
+  .chat-name {
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 12px;
+  }
+
+  .chat-description {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 12px;
+  }
+}
+
+.chat--dark {
+    color:#e8e8e8
+}
+
+.chat--light {
+    color: $text-light
+}

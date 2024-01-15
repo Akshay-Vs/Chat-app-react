@@ -1,0 +1,14 @@
+.chat {
+    // border: 1px solid #ccc;
+    flex: 1;
+    width: 100vw;
+    min-height: 87vh;
+    max-height: 87vh;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    overflow-y: scroll;
+}
