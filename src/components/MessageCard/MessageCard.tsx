@@ -18,7 +18,7 @@ const MessageCard = ({
   return (
     <div
       className={`message-card__wrapper ${
-        isBot ? "message-card__wrapper--bot" : "message-card__wrapper--user"
+        isBot ? "message-card__wrapper--bot" : "message-card__wrapper--user fadeIn"
       }`}
     >
       {isBot && (
