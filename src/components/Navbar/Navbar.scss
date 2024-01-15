@@ -12,6 +12,7 @@ nav {
   z-index: 10;
   top: 0;
 
+
   .brand-info {
     display: flex;
     align-items: center;
@@ -42,6 +43,7 @@ nav {
     flex-shrink: 0;
     margin: 22px;
     user-select: none;
+    transition: all 0.2s ease-in-out;
   }
 }
 

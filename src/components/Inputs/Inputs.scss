@@ -8,6 +8,8 @@
   position: absolute;
   bottom: 0;
 
+  transition: all 0.2s ease-in-out;
+
   .text-input {
     width: 75%;
     height: 48px;
@@ -15,12 +17,17 @@
     border-radius: 20px;
     margin: 10px 0;
 
+    @media screen and (min-width: 900px) {
+      width: 900px;
+    }
+
     &::placeholder {
       font-family: Roboto;
       font-size: 16px;
       font-style: normal;
       font-weight: 300;
       line-height: normal;
+      padding: 0 20px;
     }
 
     &:focus {
@@ -40,6 +47,12 @@
     border-radius: 100px;
     margin: 0 10px;
     user-select: none;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .send-button__icon {
       width: 24px;
@@ -70,6 +83,7 @@
   background-color: $bg-light;
   border: 2px solid $accent-light;
   color: $text-light;
+
   &::placeholder {
     color: $text-light;
   }
@@ -84,8 +98,14 @@
 }
 .send-button--dark {
   background-color: $accent-dark;
+  &:hover {
+    background-color: $accent-dark-hover;
+  }
 }
 
 .send-button--light {
   background-color: $accent-light;
+  &:hover {
+    background-color: $accent-light-hover;
+  }
 }

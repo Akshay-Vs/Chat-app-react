@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import brandAvatar from "../../assets/images/brand-avatar.png";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.scss";
 
 interface NavbarProps {
@@ -19,12 +20,21 @@ const Navbar = ({ theme, setTheme }: NavbarProps) => {
         <h1 className="company-name">Chat Name</h1>
       </div>
 
-      <FontAwesomeIcon
-        icon={faMoon}
-        className="theme-button"
-        size="lg"
-        onClick={toggleTheme}
-      />
+      {theme == "dark" ? (
+        <FontAwesomeIcon
+          icon={faSun}
+          className="theme-button"
+          size="lg"
+          onClick={toggleTheme}
+        />
+      ) : (
+        <FontAwesomeIcon
+          icon={faMoon}
+          className="theme-button"
+          size="lg"
+          onClick={toggleTheme}
+        />
+      )}
     </nav>
   );
 };

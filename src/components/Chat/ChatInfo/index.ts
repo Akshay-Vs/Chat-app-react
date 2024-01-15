@@ -1,2 +1,2 @@
-import ChatInfo from "./Chatinfo"
+import ChatInfo from "./ChatInfo"
 export default ChatInfo

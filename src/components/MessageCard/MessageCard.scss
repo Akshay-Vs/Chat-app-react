@@ -1,0 +1,105 @@
+@import "../../shared/theme.scss";
+
+.message-card {
+  width: 275px;
+  height: fit-content;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+
+  flex-shrink: 0;
+  border-radius: 20px 20px 20px 5px;
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    margin: 6px;
+    border-radius: 80px 80px 20px 100px;
+  }
+
+  &__text {
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 24px;
+  }
+  &__text--user {
+    margin: 10px 24px;
+  }
+  &__button {
+    display: flex;
+    margin: 0 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__button--dark {
+    background: $accent-dark;
+    &:hover {
+      background: $accent-dark-hover;
+    }
+  }
+
+  &__button--light {
+    background: $accent-light;
+    &:hover {
+      background: $accent-light-hover;
+    }
+  }
+}
+
+.message-card--dark {
+  box-shadow: 0px 5px 20px -5px $shade-dark;
+  background-color: $primary-dark;
+  color: $text-dark;
+}
+
+.message-card--light {
+  box-shadow: 0px 5px 20px -5px $shade-light;
+  background-color: $primary-light;
+  color: $text-light;
+}
+
+.message-card__user--dark {
+  background-color: $accent-dark;
+}
+
+.message-card__user--light {
+  background-color: $accent-light;
+}
+
+.message-card__wrapper {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 36px;
+}
+
+.message-card__wrapper--bot {
+  flex-direction: row;
+}
+
+.message-card__wrapper--user {
+  flex-direction: row-reverse;
+}
