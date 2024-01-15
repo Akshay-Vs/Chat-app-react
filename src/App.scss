@@ -1,0 +1,17 @@
+@import "./shared/theme.scss";
+
+.app {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app--dark {
+    background: $bg-dark;
+}
+
+.app--light {
+    background: $bg-light;
+}
