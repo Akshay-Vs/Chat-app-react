@@ -12,7 +12,6 @@ nav {
   z-index: 10;
   top: 0;
 
-
   .brand-info {
     display: flex;
     align-items: center;
@@ -56,6 +55,9 @@ nav {
 }
 
 .nav--light {
-  background: linear-gradient(#d9ccb7 1.51%, rgba(255, 255, 255, 0) 90.73%);
+  background: linear-gradient(
+    rgb(220, 191, 255) 1.51%,
+    rgba(255, 255, 255, 0) 90.73%
+  );
   color: $text-light;
 }

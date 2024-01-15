@@ -81,11 +81,15 @@
 }
 
 .message-card__user--dark {
-  background-color: $accent-dark;
+  border-radius: 20px 20px 5px 20px;
+  background-color: $user-message-dark;
+  margin-right: 12px;
 }
 
 .message-card__user--light {
-  background-color: $accent-light;
+  border-radius: 20px 20px 5px 20px;
+  background-color: $user-message-light;
+  margin-right: 12px;
 }
 
 .message-card__wrapper {

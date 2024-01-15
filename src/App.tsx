@@ -5,7 +5,7 @@ import Chat from "./components/Chat";
 import Inputs from "./components/Inputs/Inputs";
 
 const App = () => {
-  const [theme, setTheme] = useState<string>("dark");
+  const [theme, setTheme] = useState<string>("light");
 
   return (
     <div className={`app ${theme == "dark" ? "app--dark" : "app--light"}`}>

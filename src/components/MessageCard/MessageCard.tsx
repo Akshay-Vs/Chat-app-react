@@ -6,12 +6,14 @@ interface MessageCardProps {
   isBot: boolean;
   text: string;
   buttons: string[];
+  handleMessage: (text: string) => void;
 }
 const MessageCard = ({
   theme,
   isBot = true,
   text,
   buttons,
+  handleMessage,
 }: MessageCardProps) => {
   return (
     <div
@@ -19,7 +21,13 @@ const MessageCard = ({
         isBot ? "message-card__wrapper--bot" : "message-card__wrapper--user"
       }`}
     >
-      {isBot && <img className="message-card__avatar" src={brandAvatar} />}
+      {isBot && (
+        <img
+          className="message-card__avatar"
+          src={brandAvatar}
+          alt="brand avatar"
+        />
+      )}
       <div
         className={`message-card ${
           theme == "dark" ? "message-card--dark" : "message-card--light"
@@ -46,6 +54,7 @@ const MessageCard = ({
                 ? "message-card__button--dark"
                 : "message-card__button--light"
             }`}
+            onClick={() => handleMessage((text))}
           >
             {text}
           </div>

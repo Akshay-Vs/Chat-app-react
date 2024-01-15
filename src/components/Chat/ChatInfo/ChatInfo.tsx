@@ -9,7 +9,7 @@ const Chatinfo = ({ theme }: ChatinfoProps) => {
     <div
       className={`chat-info ${theme == "dark" ? "chat--dark" : "chat--light"}`}
     >
-      <img className="chat-avatar" src={brandAvatar} />
+      <img className="chat-avatar" src={brandAvatar} alt="brand avatar"/>
       <div className="chat-name">Chat Name</div>
       <div className="chat-description">
         There are many variations of passages of Lorem Ipsum available, but the

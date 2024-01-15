@@ -13,9 +13,13 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/smooth-scrollbar": "^8.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.69.7"
+    "react-scrollbars-custom": "^4.1.1",
+    "sass": "^1.69.7",
+    "smooth-scrollbar": "^8.8.4",
+    "smooth-scrollbar-react": "^2.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
