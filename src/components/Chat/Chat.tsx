@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ChatInfo from "./ChatInfo";
 import MessageCard from "../MessageCard";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./Chat.scss";
 import ProductCard from "../ProductCard";
-import getProducts from "../../libs/getProducts";
+import { MessageContext } from "../../contexts/MessageContext";
+import message from "../../types/messageType";
+import { getResponse } from "./chatConditions";
 
 interface ChatProps {
   theme: string;
@@ -19,120 +21,40 @@ const template = [
   },
 ];
 
-const products = getProducts();
-
 const Chat = ({ theme }: ChatProps) => {
   const endRef = useRef<HTMLDivElement>(null);
   const [scrollTrigger, setScrollTrigger] = useState(false);
   const [message, setMessage] = useState<any>(template);
+  const userMessage = useContext(MessageContext);
 
-  const handleMessages = (text: string, content: any) => {
+  const handleMessages = (message: message) => {
+    const response = getResponse(message);
     setMessage((prev: any) => [
       ...prev,
-      {
-        type: "text",
-        isBot: false,
-        text: text,
-        buttons: [],
-      },
+      response,
+      response.showTemplate && template[0],
     ]);
-
-    if (text == "What's on sale") {
-      setMessage((prev: any) => [
-        ...prev,
-        { type: "product", content: products.content },
-      ]);
-      setScrollTrigger(!scrollTrigger);
-      return;
-    }
-
-    if (text == "Browse products") {
-      setMessage((prev: any) => [
-        ...prev,
-        {
-          type: "text",
-          isBot: true,
-          text: "What are you looking for?",
-          buttons: ["Shoes", "Shirts", "Pants"],
-        },
-      ]);
-      setScrollTrigger(!scrollTrigger);
-      return;
-    }
-
-    if (text == "About Us") {
-      setMessage((prev: any) => [
-        ...prev,
-        {
-          type: "text",
-          isBot: true,
-          text: "There are many variations of passages of Lorem Ipsum available, but the majority",
-          buttons: ["What's on sale"],
-        },
-      ]);
-      setScrollTrigger(!scrollTrigger);
-      return;
-    }
-
-    if (text == "product") {
-      setMessage((prev: any) => [
-        ...prev,
-        {
-          type: "text",
-          isBot: true,
-          text: `Are you sure to but ${content.name} for $${content.price}`,
-          buttons: ["Yes", "No"],
-        },
-      ]);
-      setScrollTrigger(!scrollTrigger);
-      return;
-    }
-
-    if (text == "Yes") {
-      setMessage((prev: any) => [
-        ...prev,
-        {
-          type: "text",
-          isBot: true,
-          text: "Thanks for shopping with us",
-          buttons: [],
-        },
-        template[0],
-      ]);
-      setScrollTrigger(!scrollTrigger);
-      return;
-    }
-
-    if (text == "No") {
-      setMessage((prev: any) => [
-        ...prev,
-        {
-          type: "text",
-          isBot: true,
-          text: "Order cancelled",
-          buttons: [],
-        },
-        template[0],
-      ]);
-      setScrollTrigger(!scrollTrigger);
-      return;
-    }
-    setMessage((prev: any) => [
-      ...prev,
-      {
-        type: "text",
-        isBot: true,
-        text: "No results found",
-        buttons: [],
-      },
-      template[0],
-    ]);
-    setScrollTrigger(!scrollTrigger);
+    setScrollTrigger((prev) => !prev);
   };
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [scrollTrigger]);
+
+  useEffect(() => {
+    if (userMessage) {
+      setMessage((prev: any) => [
+        ...prev,
+        {
+          type: userMessage.type,
+          isBot: userMessage.content.isBot,
+          text: userMessage.content.text,
+          buttons: [],
+        },
+      ]);
+    }
+    setScrollTrigger((prev) => !prev);
+  }, [userMessage]);
 
   return (
     <div className="chat">
@@ -152,7 +74,6 @@ const Chat = ({ theme }: ChatProps) => {
             <ProductCard
               key={message.id || index}
               theme={theme}
-              products={products.content}
               handleMessage={handleMessages}
             />
           </div>

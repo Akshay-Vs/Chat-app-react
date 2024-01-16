@@ -1,26 +1,22 @@
 import React, { useRef, useState } from "react";
 import "./ProductCard.scss";
-
-type Product = {
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  url: string;
-};
+import getProducts from "../../libs/getProducts";
+import product from "../../types/productType";
+import message from "../../types/messageType";
 
 interface ProductCardProps {
   theme: string;
-  products: Product[];
-  handleMessage: (type: string, content: Product) => void;
+  handleMessage: (message:message) => void;
 }
 
-const ProductCard = ({ theme, products, handleMessage }: ProductCardProps) => {
+const ProductCard = ({ theme, handleMessage }: ProductCardProps) => {
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isClick, setIsClick] = useState(true);
   const slider = useRef<HTMLDivElement>(null);
+
+  const products: product[] = getProducts();
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsDown(true);
@@ -53,7 +49,7 @@ const ProductCard = ({ theme, products, handleMessage }: ProductCardProps) => {
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
     >
-      {products.map((product: Product, index:number) => (
+      {products.map((product: product, index:number) => (
         <div
           className={`product-card__container ${
             theme == "dark"
@@ -63,7 +59,15 @@ const ProductCard = ({ theme, products, handleMessage }: ProductCardProps) => {
           key={index}
           onClick={(e) => {
             e.stopPropagation();
-            isClick && handleMessage("product", product);
+            isClick && handleMessage({
+              type: "product",
+              content: {
+                name: product.name,
+                description: product.description,
+                image: product.image,
+                price: product.price,
+              },
+            });
           }}
         >
           <img

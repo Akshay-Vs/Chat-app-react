@@ -1,16 +1,13 @@
 import brandAvatar from "../../assets/images/brand-avatar.png";
+import message from "../../types/messageType";
 import "./MessageCard.scss";
-
-interface Content {
-  text: string;
-}
 
 interface MessageCardProps {
   theme: string;
   isBot: boolean;
   text: string;
   buttons: string[];
-  handleMessage: (text: string, content: Content) => void;
+  handleMessage: (message: message) => void;
 }
 const MessageCard = ({
   theme,
@@ -60,7 +57,12 @@ const MessageCard = ({
                 ? "message-card__button--dark"
                 : "message-card__button--light"
             }`}
-            onClick={() => handleMessage(text, { text })}
+            onClick={() =>
+              handleMessage({
+                type: "text",
+                content: { text: text },
+              })
+            }
           >
             {text}
           </div>
