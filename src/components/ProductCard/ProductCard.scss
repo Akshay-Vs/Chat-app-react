@@ -13,10 +13,8 @@
 
   padding-left: 36px;
   margin-bottom: 24px;
+  scroll-behavior: smooth;
 
-  &:hover {
-    cursor: grab;
-  }
   &:active {
     cursor: grabbing;
   }
@@ -35,7 +33,7 @@
 
     margin: 12px;
     margin-bottom: 24px;
-    pointer-events: none;
+    cursor: pointer;
     user-select: none;
   }
 

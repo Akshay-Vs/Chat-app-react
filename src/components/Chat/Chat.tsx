@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ChatInfo from "./ChatInfo";
 import MessageCard from "../MessageCard";
 import { useEffect, useRef, useState } from "react";
 import "./Chat.scss";
 import ProductCard from "../ProductCard";
+import getProducts from "../../libs/getProducts";
 
 interface ChatProps {
   theme: string;
@@ -17,56 +19,14 @@ const template = [
   },
 ];
 
-const products = {
-  type: "product",
-  content: [
-    {
-      name: "Product Name",
-      description:
-        "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 49.99,
-      image:
-        "https://img.freepik.com/premium-photo/product-photography-shoe_981061-349.jpg",
-      url: "https://www.google.com",
-    },
-
-    {
-      name: "Product Name",
-      description:
-        "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 58.99,
-      image:
-        "https://img.freepik.com/premium-photo/neon-light-sneakers-trendy-stylish-way-make-statement-they-are-perfect-parties-clubs_1030265-411.jpg",
-      url: "https://www.google.com",
-    },
-    {
-      name: "Product Name",
-      description:
-        "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 62.29,
-      image:
-        "https://images.nightcafe.studio/jobs/582IxECj4VBSBsvCgJvq/582IxECj4VBSBsvCgJvq--4--hy5ce.jpg",
-      url: "https://www.google.com",
-    },
-    {
-      type: "product",
-      name: "Product Name",
-      description:
-        "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 39.99,
-      image:
-        "https://img.freepik.com/premium-photo/neon-shoe-with-glowing-sole-is-lit-up-neon-light_635062-353.jpg",
-      url: "https://www.google.com",
-    },
-  ],
-};
+const products = getProducts();
 
 const Chat = ({ theme }: ChatProps) => {
   const endRef = useRef<HTMLDivElement>(null);
   const [scrollTrigger, setScrollTrigger] = useState(false);
   const [message, setMessage] = useState<any>(template);
 
-  const handleMessages = (text: string) => {
+  const handleMessages = (text: string, content: any) => {
     setMessage((prev: any) => [
       ...prev,
       {
@@ -77,8 +37,6 @@ const Chat = ({ theme }: ChatProps) => {
       },
     ]);
 
-    console.log(message);
-    
     if (text == "What's on sale") {
       setMessage((prev: any) => [
         ...prev,
@@ -116,6 +74,49 @@ const Chat = ({ theme }: ChatProps) => {
       return;
     }
 
+    if (text == "product") {
+      setMessage((prev: any) => [
+        ...prev,
+        {
+          type: "text",
+          isBot: true,
+          text: `Are you sure to but ${content.name} for $${content.price}`,
+          buttons: ["Yes", "No"],
+        },
+      ]);
+      setScrollTrigger(!scrollTrigger);
+      return;
+    }
+
+    if (text == "Yes") {
+      setMessage((prev: any) => [
+        ...prev,
+        {
+          type: "text",
+          isBot: true,
+          text: "Thanks for shopping with us",
+          buttons: [],
+        },
+        template[0],
+      ]);
+      setScrollTrigger(!scrollTrigger);
+      return;
+    }
+
+    if (text == "No") {
+      setMessage((prev: any) => [
+        ...prev,
+        {
+          type: "text",
+          isBot: true,
+          text: "Order cancelled",
+          buttons: [],
+        },
+        template[0],
+      ]);
+      setScrollTrigger(!scrollTrigger);
+      return;
+    }
     setMessage((prev: any) => [
       ...prev,
       {
@@ -136,10 +137,10 @@ const Chat = ({ theme }: ChatProps) => {
   return (
     <div className="chat">
       <ChatInfo theme={theme} />
-      {message.map((message: any) =>
+      {message.map((message: any, index: number) =>
         message.type == "text" ? (
           <MessageCard
-            key={message.text}
+            key={message.id || index}
             theme={theme}
             isBot={message.isBot}
             text={message.text}
@@ -148,7 +149,12 @@ const Chat = ({ theme }: ChatProps) => {
           />
         ) : message.type == "product" ? (
           <div className="horiz-scroll">
-            <ProductCard theme={theme} products={products.content} />
+            <ProductCard
+              key={message.id || index}
+              theme={theme}
+              products={products.content}
+              handleMessage={handleMessages}
+            />
           </div>
         ) : (
           ""

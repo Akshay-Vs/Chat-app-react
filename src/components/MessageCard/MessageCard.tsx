@@ -1,12 +1,16 @@
 import brandAvatar from "../../assets/images/brand-avatar.png";
 import "./MessageCard.scss";
 
+interface Content {
+  text: string;
+}
+
 interface MessageCardProps {
   theme: string;
   isBot: boolean;
   text: string;
   buttons: string[];
-  handleMessage: (text: string) => void;
+  handleMessage: (text: string, content: Content) => void;
 }
 const MessageCard = ({
   theme,
@@ -18,7 +22,9 @@ const MessageCard = ({
   return (
     <div
       className={`message-card__wrapper ${
-        isBot ? "message-card__wrapper--bot" : "message-card__wrapper--user fadeIn"
+        isBot
+          ? "message-card__wrapper--bot"
+          : "message-card__wrapper--user fadeIn"
       }`}
     >
       {isBot && (
@@ -54,7 +60,7 @@ const MessageCard = ({
                 ? "message-card__button--dark"
                 : "message-card__button--light"
             }`}
-            onClick={() => handleMessage((text))}
+            onClick={() => handleMessage(text, { text })}
           >
             {text}
           </div>
