@@ -24,7 +24,7 @@ const products = {
       name: "Product Name",
       description:
         "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 100,
+      price: 49.99,
       image:
         "https://img.freepik.com/premium-photo/product-photography-shoe_981061-349.jpg",
       url: "https://www.google.com",
@@ -34,7 +34,7 @@ const products = {
       name: "Product Name",
       description:
         "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 100,
+      price: 58.99,
       image:
         "https://img.freepik.com/premium-photo/neon-light-sneakers-trendy-stylish-way-make-statement-they-are-perfect-parties-clubs_1030265-411.jpg",
       url: "https://www.google.com",
@@ -43,9 +43,9 @@ const products = {
       name: "Product Name",
       description:
         "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 100,
+      price: 62.29,
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd_6l9nFoc5wbrHFyftATOUZ1_Qsa15pAX2njL1pokATjR9kfEh3OkLcyCpeSjRv3mXKQ&usqp=CAU",
+        "https://images.nightcafe.studio/jobs/582IxECj4VBSBsvCgJvq/582IxECj4VBSBsvCgJvq--4--hy5ce.jpg",
       url: "https://www.google.com",
     },
     {
@@ -53,7 +53,7 @@ const products = {
       name: "Product Name",
       description:
         "There are many variations of passages of Lorem Ipsum available, but the majority",
-      price: 100,
+      price: 39.99,
       image:
         "https://img.freepik.com/premium-photo/neon-shoe-with-glowing-sole-is-lit-up-neon-light_635062-353.jpg",
       url: "https://www.google.com",
@@ -76,6 +76,9 @@ const Chat = ({ theme }: ChatProps) => {
         buttons: [],
       },
     ]);
+
+    console.log(message);
+    
     if (text == "What's on sale") {
       setMessage((prev: any) => [
         ...prev,

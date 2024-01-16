@@ -14,6 +14,13 @@
   padding-left: 36px;
   margin-bottom: 24px;
 
+  &:hover {
+    cursor: grab;
+  }
+  &:active {
+    cursor: grabbing;
+  }
+
   &__container {
     width: 275px;
     max-height: 405px;
@@ -28,6 +35,8 @@
 
     margin: 12px;
     margin-bottom: 24px;
+    pointer-events: none;
+    user-select: none;
   }
 
   &__container--dark {
@@ -46,6 +55,8 @@
     border-radius: 20px;
     object-fit: cover;
     object-position: center;
+    user-select: none;
+    pointer-events: none;
   }
 
   &__product-name {
@@ -57,6 +68,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 12px;
+    user-select: text;
   }
 
   &__product-description {
@@ -73,6 +85,7 @@
     font-style: normal;
     font-weight: 300;
     line-height: normal;
+    user-select: text;
   }
   &__product-price {
     width: 100%;
