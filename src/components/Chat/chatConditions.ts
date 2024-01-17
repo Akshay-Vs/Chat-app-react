@@ -41,7 +41,7 @@ export const getResponse = (message: message) => {
     return {
       type: "text",
       isBot: true,
-      text: `Are you sure to but ${content.name} for $${content.price}`,
+      text: `Are you sure to buy ${content.name} for $${content.price}`,
       buttons: ["Yes", "No"],
       image: content.image,
       showTemplate: false,
