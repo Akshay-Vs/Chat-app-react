@@ -66,6 +66,7 @@ const ProductCard = ({ theme, handleMessage }: ProductCardProps) => {
                 description: product.description,
                 image: product.image,
                 price: product.price,
+                text: product.name,
               },
             });
           }}

@@ -7,11 +7,14 @@ export const getResponse = (message: message) => {
   const content = message.content;
   const products = getProducts();
 
+  console.log("message", message);
+
   if (text == "What's on sale") {
     return {
       type: "product",
       content: products,
       showTemplate: false,
+      showPayment: false,
     };
   }
   if (text == "Browse products") {
@@ -21,6 +24,7 @@ export const getResponse = (message: message) => {
       text: "What are you looking for?",
       buttons: ["Shoes", "Shirts", "Pants"],
       showTemplate: false,
+      showPayment: false,
     };
   }
   if (text == "About Us") {
@@ -30,6 +34,7 @@ export const getResponse = (message: message) => {
       text: "There are many variations of passages of Lorem Ipsum available, but the majority",
       buttons: ["What's on sale"],
       showTemplate: false,
+      showPayment: false,
     };
   }
   if (type == "product") {
@@ -38,16 +43,19 @@ export const getResponse = (message: message) => {
       isBot: true,
       text: `Are you sure to but ${content.name} for $${content.price}`,
       buttons: ["Yes", "No"],
+      image: content.image,
       showTemplate: false,
+      showPayment: false,
     };
   }
   if (text == "Yes") {
     return {
       type: "text",
       isBot: true,
-      text: "Thanks for shopping with us",
+      text: "Proceeding to payment",
       buttons: [],
-      showTemplate: true,
+      showTemplate: false,
+      showPayment: true,
     };
   }
 
@@ -58,6 +66,7 @@ export const getResponse = (message: message) => {
       text: "Order cancelled",
       buttons: [],
       showTemplate: true,
+      showPayment: false,
     };
   }
   return {
@@ -66,5 +75,6 @@ export const getResponse = (message: message) => {
     text: "No results found",
     buttons: [],
     showTemplate: true,
+    showPayment: false,
   };
 };

@@ -1,0 +1,50 @@
+@import "../../shared/theme.scss";
+
+.bottom-sheet {
+  width: 100%;
+  height: 500px;
+  flex-shrink: 0;
+
+  max-width: 1024px;
+  @media screen and (min-width: 720px) {
+    max-width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  z-index: 19;
+}
+
+.bottom-sheet--dark {
+  background: $dark-secondary;
+}
+
+.bottom-sheet--light {
+  background: $light-secondary;
+}
+
+.bottom-sheet__wrapper {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  background: #00000023;
+  backdrop-filter: blur(2px);
+  
+  z-index: 11;
+}
+
+.bottom-sheet--show {
+  transform: translateY(-100%);
+}
+
+.bottom-sheet--hide {
+  transform: translateY(0%);
+}

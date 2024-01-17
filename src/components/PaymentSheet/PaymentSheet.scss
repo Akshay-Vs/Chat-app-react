@@ -1,0 +1,139 @@
+@import "../../shared/theme.scss";
+
+.payment-sheet {
+  width: 100%;
+  height: 500px;
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      width: 80%;
+      height: 60px;
+      flex-shrink: 0;
+      background-color: transparent;
+      border: none;
+      margin-top: 12px;
+
+      font-family: Roboto;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #787878;
+      }
+    }
+  }
+  &__title {
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 36px;
+  }
+
+  &__title--dark {
+    color: $text-dark;
+  }
+  &__title--light {
+    color: $text-light;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 24px;
+
+    .input--small {
+      width: 40%;
+    }
+  }
+
+  .input--dark {
+    border-bottom: 2px solid $accent-dark;
+    color: $text-dark;
+  }
+  .input--light {
+    border-bottom: 2px solid $accent-light;
+    color: $text-light;
+  }
+
+  &__button {
+    width: 80%;
+    display: flex;
+    margin: 24px 12px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__button--dark {
+    background: $accent-dark;
+    &:hover {
+      background: $accent-dark-hover;
+    }
+  }
+
+  &__button--light {
+    background: $accent-light;
+    &:hover {
+      background: $accent-light-hover;
+    }
+  }
+
+  &__image {
+    width: 80%;
+    height: 50%;
+    flex-shrink: 0;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__loading-bar {
+    border: 16px solid $accent-light; 
+    border-top: 16px solid $accent-dark;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin-top: 50%;
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -7,6 +7,7 @@ interface MessageCardProps {
   isBot: boolean;
   text: string;
   buttons: string[];
+  image?: string;
   handleMessage: (message: message) => void;
 }
 const MessageCard = ({
@@ -15,6 +16,7 @@ const MessageCard = ({
   text,
   buttons,
   handleMessage,
+  image,
 }: MessageCardProps) => {
   return (
     <div
@@ -42,6 +44,13 @@ const MessageCard = ({
             : "message-card__user--light"
         }`}
       >
+        {image && (
+          <img
+            className="message-card__image"
+            src={image}
+            alt="Product image"
+          />
+        )}
         <h1
           className={`message-card__text ${
             isBot ? "" : "message-card__text--user"
@@ -49,6 +58,7 @@ const MessageCard = ({
         >
           {text}
         </h1>
+
         {buttons.map((text) => (
           <div
             key={text}
